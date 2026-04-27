@@ -3,29 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خوێندنگەی شەهید فەخیر مەرجاسۆری</title>
+<title>کۆمەلگەی شەهید فەخیر مەرگەسۆری</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#eef2f7;color:#333;scroll-behavior:smooth;}
+
+/* ----- animations for all elements ----- */
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* apply to sections, cards, headings, nav links, footer */
+nav, header, section, footer {
+  animation: fadeSlideUp 0.7s ease forwards;
+}
+
+nav a {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+nav a:hover {
+  transform: translateY(-3px);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header img {
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+header img:hover {
+  transform: rotate(8deg) scale(1.08);
+}
+
+.card {
+  animation: fadeSlideUp 0.6s ease backwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+section h2 {
+  animation: slideInLeft 0.5s ease;
+  position: relative;
+}
+section h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #ff9800;
+  margin: 12px auto 0;
+  border-radius: 4px;
+  animation: gentlePulse 1.5s infinite ease;
+}
+
+.grid .card:nth-child(1) { animation-delay: 0.05s; }
+.grid .card:nth-child(2) { animation-delay: 0.1s; }
+.grid .card:nth-child(3) { animation-delay: 0.15s; }
+.grid .card:nth-child(4) { animation-delay: 0.2s; }
+
+.lang-switch {
+  transition: all 0.2s ease;
+}
+.lang-switch:hover {
+  background: #ff9800;
+  color: white;
+  border-radius: 20px;
+}
+
+.music-container {
+  animation: slideInRight 0.5s ease;
+  transition: all 0.2s;
+}
+.music-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+footer p {
+  animation: gentlePulse 2s infinite ease;
+}
+
+/* navigation & base */
 nav{background:#2575fc;padding:15px 30px;display:flex;justify-content:center;gap:20px;position:sticky;top:0;z-index:1000; flex-wrap: wrap;}
 nav a{text-decoration:none;color:white;font-weight:600;}
 header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#4a148c,#1976d2);color:white;position:relative;}
-header img{width:160px;height:160px;margin-bottom:15px;border-radius:50%;border:4px solid white;cursor:pointer;transition: transform 0.3s;object-fit:cover;}
-header img:hover{transform: rotate(20deg) scale(1.1);}
-header h1,header p{transition:0.3s;}
-.lang-switch{position:absolute;top:15px;left:20px;background:white;color:#2575fc;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600;}
+header img{width:160px;height:160px;margin-bottom:15px;border-radius:50%;border:4px solid white;cursor:pointer;object-fit:cover;}
+.lang-switch{position:absolute;top:15px;left:20px;background:white;color:#2575fc;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600;z-index:1100;}
 section{padding:70px 20px;max-width:1200px;margin:auto;}
 section h2{text-align:center;margin-bottom:30px;font-size:2.5em;color:#1976d2;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:30px;}
-.card{background:white;padding:22px;border-radius:14px;box-shadow:0 6px 12px rgba(0,0,0,0.1);transition:transform 0.3s ease;}
-.card:hover{transform:translateY(-8px);}
-.announcement{background:#ff9800;color:#1a1a1a;padding:15px 20px;border-radius:60px;margin:20px auto 10px;max-width:800px;font-weight:700;font-size:1.3rem;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-align:center;border:2px solid white;}
-.ramadan-msg{background:#2e7d32;color:white;padding:12px 20px;border-radius:40px;margin:15px auto 5px;max-width:700px;font-weight:600;font-size:1.2rem;box-shadow:0 4px 8px rgba(0,0,0,0.2);text-align:center;border:1px solid #fbc02d;}
-.ramadan-closure{background:#8d6e63;color:white;padding:15px 20px;border-radius:60px;margin:15px auto 10px;max-width:750px;font-weight:700;font-size:1.3rem;box-shadow:0 4px 10px rgba(0,0,0,0.2);text-align:center;border:2px solid #ffd54f;}
+.card{background:white;padding:22px;border-radius:14px;box-shadow:0 6px 12px rgba(0,0,0,0.1);}
 footer{background:#1976d2;color:white;text-align:center;padding:20px;}
 
-/* NEW: Simple music container */
 .music-container{position:fixed;bottom:20px;left:20px;background:white;border-radius:16px;padding:15px;box-shadow:0 5px 20px rgba(0,0,0,0.2);z-index:999;width:320px;border:2px solid #1976d2;}
 .music-title{color:#1976d2;font-weight:700;margin-bottom:10px;text-align:center;font-size:16px;}
 .music-iframe{width:100%;height:60px;border-radius:8px;border:1px solid #ddd;}
@@ -45,52 +134,29 @@ footer{background:#1976d2;color:white;text-align:center;padding:20px;}
 <nav>
 <a href="#home" data-ku="سەرەتا" data-bd="سەرەتە" data-ar="الرئيسية" data-en="Home">سەرەتا</a>
 <a href="#about" data-ku="دەربارە" data-bd="دەربارە" data-ar="حول" data-en="About">دەربارە</a>
-<a href="#news" data-ku="هەواڵەکان" data-bd="هەواڵەکان" data-ar="الأخبار" data-en="News">هەواڵەکان</a>
+<a href="#news" data-ku="کاروچاڵاکیەکانی ئەم ھەفتیە" data-bd="کاروچاڵاکیەکانی ئەم ھەفتیە" data-ar="کاروچاڵاکیەکانی ئەم ھەفتیە" data-en="کاروچاڵاکیەکانی ئەم ھەفتیە">کاروچاڵاکیەکانی ئەم ھەفتیە</a>
 <a href="#info" data-ku="زانیاری زیاتر" data-bd="زانیاری زیاتر" data-ar="معلومات إضافية" data-en="Info">زانیاری زیاتر</a>
-<a href="#contact" data-ku="پەیوەندی" data-bd="پەیوەندی" data-ar="اتصل" data-en="Contact">پەیوەندی</a>
+<a href="#contact" data-ku="ناونیشانی کۆمەڵگا" data-bd="ناونیشانی کۆمەڵگا" data-ar="اتصل" data-en="Contact">ناونیشانی کۆمەڵگا</a>
 </nav>
 
 <header id="home">
-<img src="https://tse3.mm.bing.net/th/id/OIP.b1asZH6FGmowYtFe6EIkUQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" 
-     alt="لۆگۆی خوێندنگە" 
-     onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23ffc107\' stroke=\'%23257bfc\' stroke-width=\'4\'/%3E%3Cpath d=\'M30 40 L50 20 L70 40 L60 65 L40 65 Z\' fill=\'%231976d2\' /%3E%3Ctext x=\'50\' y=\'80\' font-size=\'16\' text-anchor=\'middle\' fill=\'%234a148c\' font-family=\'Poppins\' font-weight=\'bold\'%3Eشەهید%3C/text%3E%3C/svg%3E'"
-     onclick="scrollToHome()">
-<h1 data-ku="خوێندنگەی شەهید فەخیر مەرجاسۆری" data-bd="خوێندنگەی شەهید فەخیر مەرجاسۆری" data-ar="مدرسة شهيد فخير مرجاصوري" data-en="Shahid Fakhir Mergasori School">خوێندنگەی شەهید فەخیر مەرجاسۆری</h1>
-<p data-ku="بەخێربێن بۆ ماڵپەڕی فەرمی خوێندنگەکەمان" data-bd="بەخێربێن بۆ ماڵپەڕی فەرمی خوێندنگەکەمان" data-ar="مرحبًا بكم في موقعنا الرسمي" data-en="Welcome to our official school website">بەخێربێن بۆ ماڵپەڕی فەرمی خوێندنگەکەمان</p>
-
-<div class="announcement" data-ku="📅 ڕاگەیاندن: قوتابخانە لە ڕێکەوتی ٣ی ١١ (سێشەممە) دادەخرێت بەهۆی ڕەمەزانی پیرۆز" 
-     data-bd="📅 ڕاگەیاندن: قوتابخانە لە ڕێکەوتی ٣ی ١١ (سێشەممە) دادەخرێت بەهۆی بۆنەیەکی تایبەتەوە" 
-     data-ar="📅 إشعار: المدرسة مغلقة في ٣ نوفمبر (الثلاثاء) بمناسبة خاصة" 
-     data-en="📅 Notice: School closed on March 11 (Tuesday) for a special event">
-     📅 ڕاگەیاندن: قوتابخانە لە ڕێکەوتی ٣ی ١١ (سێشەممە) دادەخرێت بەهۆی ڕەمەزانی پیرۆز 
-</div>
-
-<div class="ramadan-msg" data-ku="🌙 ڕەمەزانی پیرۆز بێت، بەخێربێیت مانگی ڕەحمەت" 
-     data-bd="🌙 ڕەمەزانی پیرۆز بێت، بەخێربێیت مانگی ڕەحمەت" 
-     data-ar="🌙 رمضان كريم، شهر الرحمة" 
-     data-en="🌙 Ramadan Mubarak, welcome month of mercy">
-     🌙 ڕەمەزانی پیرۆز بێت، بەخێربێیت مانگی ڕەحمەت
-</div>
-
-<div class="ramadan-closure" data-ku="🕌 دووبارە ڕاگەیاندن: قوتابخانە بەردەوام داخراوە بەهۆی مانگی ڕەمەزانی پیرۆزەوە. خوێندن لە کاتی خۆیدا ڕادەگەیەنرێت." 
-     data-bd="🕌 دووبارە ڕاگەیاندن: قوتابخانە بەردەوام داخراوە بەهۆی مانگی ڕەمەزانی پیرۆزەوە." 
-     data-ar="🕌 إشعار متجدد: المدرسة مغلقة باستمرار خلال شهر رمضان المبارك." 
-     data-en="🕌 Repeated notice: School remains closed during the holy month of Ramadan.">
-     🕌 دووبارە ڕاگەیاندن: قوتابخانە بەردەوام داخراوە بەهۆی مانگی ڕەمەزانی پیرۆزەوە. خوێندن لە کاتی خۆیدا ڕادەگەیەنرێت.
-</div>
+<img src="https://tse2.mm.bing.net/th/id/OIP.h4b_qly2cFQquu-TxmI0UgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+alt="لۆگۆی خوێندنگە"
+<h1 data-ku="کۆمەلگەی شەهید فەخیر مەرگەسۆری" data-bd="کۆمەلگەی شەهید فەخیر مەرگەسۆری" data-ar="مدرسة شهيد فخير مرجاصوري" data-en="Shahid Fakhir Mergasori School">کۆمەلگەی شەهید فەخیر مەرگەسۆری</h1>
+<p data-ku="بەخێربێن بۆ ماڵپەڕی فەرمی کۆمەلگەیکەمان" data-bd="بەخێربێن بۆ ماڵپەڕی فەرمی کۆمەلگەیکەمان" data-ar="مرحبًا بكم في موقعنا الرسمي" data-en="Welcome to our official school website">بەخێربێن بۆ ماڵپەڕی فەرمی کۆمەلگەیکەمان</p>
 </header>
 
 <section id="about">
-<h2 data-ku="دەربارەی خوێندنگەکەمان" data-bd="دەربارەی خوێندنگەکەمان" data-ar="حول المدرسة" data-en="About Our School">دەربارەی خوێندنگەکەمان</h2>
+<h2 data-ku="دەربارەی قوتابخانە" data-bd="دەربارەی کۆمەلگەی شەهید فەخیر مەرگەسۆری " data-ar="حول المدرسة" data-en="About Our School">دەربارەی کۆمەلگەی شەهید فەخیر مەرگەسۆری </h2>
 <div class="grid">
 <div class="card"><h3 data-ku="بینینی ئێمە" data-bd="بینینی ئێمە" data-ar="رؤيتنا" data-en="Our Vision">بینینی ئێمە</h3><p data-ku="خوێندنی باکیفی بەشداربوون و ڕاهێنان بۆ داهاتوی بەهێز." data-bd="خوێندنی باکیفی بەشداربوون و ڕاهێنان بۆ داهاتوی بەهێز." data-ar="تعليم ذو جودة وإرشاد الطلاب لمستقبل أفضل." data-en="Quality education and guiding students for a brighter future.">خوێندنی باکیفی بەشداربوون و ڕاهێنان بۆ داهاتوی بەهێز.</p></div>
 <div class="card"><h3 data-ku="ئامانجی ئێمە" data-bd="ئامانجی ئێمە" data-ar="مهمتنا" data-en="Our Mission">ئامانجی ئێمە</h3><p data-ku="پێشکەشکردنی فێرکاری باکیفی و گەشەی تایبەتی." data-bd="پێشکەشکردنی فێرکاری باکیفی و گەشەی تایبەتی." data-ar="تقديم تعليم عالي الجودة ونمو شخصي." data-en="Providing quality learning and personal growth.">پێشکەشکردنی فێرکاری باکیفی و گەشەی تایبەتی.</p></div>
-<div class="card"><h3 data-ku="تاریخچە و دامەزراندن" data-bd="تاریخچە و دامەزراندن" data-ar="التأسيس" data-en="History and Creation">تاریخچە و دامەزراندن</h3><p data-ku="خوێندنگە لە ساڵی 1995 دامەزرابوو." data-bd="خوێندنگە لە ساڵی 1995 دامەزرابوو." data-ar="تأسست المدرسة في عام 1995." data-en="The school was founded in 1995.">خوێندنگە لە ساڵی 1995 دامەزرابوو.</p><p data-ku="شوێنی دامەزراندن: هەولێر، عێراق" data-bd="شوێنی دامەزراندن: هەولێر، عێراق" data-ar="موقع التأسيس: أربيل، العراق" data-en="Founded in: Erbil, Iraq">شوێنی دامەزراندن: هەولێر، عێراق</p></div>
-<div class="card"><h3 data-ku="پڕۆگرام و فەسیلیتەکان" data-bd="پڕۆگرام و فەسیلیتەکان" data-ar="البرامج والمرافق" data-en="Programs and Facilities">پڕۆگرام و فەسیلیتەکان</h3><p data-ku="خوێندنگە پڕۆگرامەکی زانستی و وەرزشی هەیە." data-bd="خوێندنگە پڕۆگرامەکی زانستی و وەرزشی هەیە." data-ar="تقدم المدرسة برامج علمية ورياضية." data-en="The school offers scientific and sports programs.">خوێندنگە پڕۆگرامەکی زانستی و وەرزشی هەیە.</p></div>
+<div class="card"><h3 data-ku="رێکەوتی  دامەزراندن" data-bd="رێکەوتی  دامەزراندن" data-ar="التأسيس" data-en="History and Creation">رێکەوتی  دامەزراندن</h3><p data-ku="کۆمەلگەیکەمان لە ساڵی 2007/2707 دامەزرابوو." data-bd="کۆمەلگەیکەمان لە ساڵی 2007/2707 دامەزرابوو." data-ar="تأسست المدرسة في عام 2007/2707." data-en="The school was founded in 1995.">کۆمەلگەیکەمان لە ساڵی 2007/2707 دامەزرابوو.</p><p data-ku="شوێنی دامەزراندن:شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان" data-bd="شوێنی دامەزراندن:شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان" data-ar="موقع التأسيس:شوێنی دامەزراندن:شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان" data-en="Founded in: Erbil, Iraq">شوێنی دامەزراندن:شوێنی دامەزراندن:شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان</p></div>
+<div class="card"><h3 data-ku="پڕۆگرام و فەسیلیتەکان" data-bd="پڕۆگرام و فەسیلیتەکان" data-ar="البرامج والمرافق" data-en="Programs and Facilities">پڕۆگرام و فەسیلیتەکان</h3><p data-ku="کۆمەلگەیکەمان پڕۆگرامەکی زانستی و وەرزشی هەیە." data-bd="کۆمەلگەیکەمان پڕۆگرامەکی زانستی و وەرزشی هەیە." data-ar="تقدم المدرسة برامج علمية ورياضية." data-en="The school offers scientific and sports programs.">کۆمەلگەیکەمان پڕۆگرامەکی زانستی و وەرزشی هەیە.</p></div>
 </div>
 </section>
 
-<!-- NEW: Simple embedded player from Archive.org -->
+<!-- music player (intact) -->
 <div class="music-container">
   <div class="music-title">🎵 هەر کوردین و هەر کورد ئەبین</div>
   <iframe src="https://archive.org/embed/har-kurdin-w-har-kurd-abin" width="100%" height="60" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen class="music-iframe"></iframe>
@@ -110,36 +176,46 @@ function changeLanguage(lang){
     const translation = el.getAttribute('data-'+lang);
     if(translation) el.innerText = translation;
   });
-} 
-
-// Initialize
+}
 changeLanguage('ku');
 </script>
 
-<section id="news">
-  <h2 data-ku="هەواڵەکان" data-bd="هەواڵەکان" data-ar="الأخبار" data-en="News">هەواڵەکان</h2>
+<section id="کاروچاڵاکیەکانی ئەم ھەفتیە">
+  <h2 data-ku="کاروچاڵاکیەکانی ئەم ھەفتیە" data-bd="کاروچاڵاکیەکانی ئەم ھەفتیە" data-ar="کاروچاڵاکیەکانی ئەم ھەفتیە" data-en="کاروچاڵاکیەکانی ئەم ھەفتیە">کاروچاڵاکیەکانی ئەم ھەفتیە</h2>
   <div class="grid">
-    <div class="card"><h3 data-ku="داخستنی قوتابخانە ٣/١١" data-bd="داخستنی قوتابخانە ٣/١١" data-ar="إغلاق المدرسة ٣/١١" data-en="School closed 3/11">داخستنی قوتابخانە ٣/١١</h3><p data-ku="قوتابخانە لە ڕێکەوتی ٣ی ١١ دادەخرێت." data-bd="قوتابخانە لە ڕێکەوتی ٣ی ١١ دادەخرێت." data-ar="المدرسة مغلقة في ٣ نوفمبر." data-en="School closed March 11.">قوتابخانە لە ڕێکەوتی ٣ی ١١ دادەخرێت.</p></div>
-    <div class="card"><h3 data-ku="داخستنی بەردەوام بەهۆی ڕەمەزان" data-bd="داخستنی بەردەوام بەهۆی ڕەمەزان" data-ar="إغلاق مستمر بسبب رمضان" data-en="Continuous closure due to Ramadan">داخستنی بەردەوام بەهۆی ڕەمەزان</h3><p data-ku="قوتابخانە لە ماوەی مانگی ڕەمەزانی پیرۆزدا داخراوە." data-bd="قوتابخانە لە ماوەی مانگی ڕەمەزانی پیرۆزدا داخراوە." data-ar="المدرسة مغلقة طوال شهر رمضان." data-en="School closed during Ramadan.">قوتابخانە لە ماوەی مانگی ڕەمەزانی پیرۆزدا داخراوە.</p></div>
-    <div class="card"><h3 data-ku="پێشبڕکێی زانستی" data-bd="پێشبڕکێی زانستی" data-ar="مسابقة علمية" data-en="Science fair">پێشبڕکێی زانستی</h3><p data-ku="بە سەرکەوتووی لە خوێندنگە بەڕێوەچوو" data-bd="بە سەرکەوتووی لە خوێندنگە بەڕێوەچوو" data-ar="أقيمت بنجاح في المدرسة" data-en="Successfully held at school">بە سەرکەوتووی لە خوێندنگە بەڕێوەچوو</p></div>
+    <div class="card">
+      <h3 data-ku="قوتابخانە کراوەیە" data-bd="کۆمەلگەیکەمان کراوەیە" data-ar="المدرسة مفتوحة" data-en="School is open">کۆمەلگەیکەمان کراوەیە</h3>
+      <h3 data-ku="۱-گەشتێکی زانستی بۆناولاپەرەکانی مێژوولەیادی۱۲۸ساڵی رۆژنامەگەری کوردی۲-ژینگەپارێزی لەپێشینەی کارەکانمانە۳-زیاترلە۱۰۰چاندنی نەمام لە گۆرەپانی کۆمەلگا٤-چاودێری کردنی سەردانی کردنەوەی مەیدانی لێژنەی ژینگەو تەندروستی بۆ کافتریای قوتابخانە٥-رێنمای کردنی قوتابی بۆ کاتی تاقیکردنەوەکان" data-bd="۱-گەشتێکی زانستی بۆناولاپەرەکانی مێژوولەیادی۱۲۸ساڵی رۆژنامەگەری کوردی۲-ژینگەپارێزی لەپێشینەی کارەکانمانە۳-زیاترلە۱۰۰چاندنی نەمام لە گۆرەپانی کۆمەلگا٤-چاودێری کردنی سەردانی کردنەوەی مەیدانی لێژنەی ژینگەو تەندروستی بۆ کافتریای قوتابخانە٥-رێنمای کردنی قوتابی بۆ کاتی تاقیکردنەوەکان" data-ar="۱-گەشتێکی زانستی بۆناولاپەرەکانی مێژوولەیادی۱۲۸ساڵی رۆژنامەگەری کوردی۲-ژینگەپارێزی لەپێشینەی کارەکانمانە۳-زیاترلە۱۰۰چاندنی نەمام لە گۆرەپانی کۆمەلگا٤-چاودێری کردنی سەردانی کردنەوەی مەیدانی لێژنەی ژینگەو تەندروستی بۆ کافتریای قوتابخانە٥-رێنمای کردنی قوتابی بۆ کاتی تاقیکردنەوەکان" data-en="۱-گەشتێکی زانستی بۆناولاپەرەکانی مێژوولەیادی۱۲۸ساڵی رۆژنامەگەری کوردی۲-ژینگەپارێزی لەپێشینەی کارەکانمانە۳-زیاترلە۱۰۰چاندنی نەمام لە گۆرەپانی کۆمەلگا٤-چاودێری کردنی سەردانی کردنەوەی مەیدانی لێژنەی ژینگەو تەندروستی بۆ کافتریای قوتابخانە٥-رێنمای کردنی قوتابی بۆ کاتی تاقیکردنەوەکان>۱-گەشتێکی زانستی بۆناولاپەرەکانی مێژوولەیادی۱۲۸ساڵی رۆژنامەگەری کوردی۲-ژینگەپارێزی لەپێشینەی کارەکانمانە۳-زیاترلە۱۰۰چاندنی نەمام لە گۆرەپانی کۆمەلگا٤-چاودێری کردنی سەردانی کردنەوەی مەیدانی لێژنەی ژینگەو تەندروستی بۆ کافتریای قوتابخانە٥-رێنمای کردنی قوتابی بۆ کاتی تاقیکردنەوەکان</h3>
+      <p data-ku="کۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە." data-bd="کۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە." data-ar="المدرسة مفتوحة كالمعتاد والدراسة مستمرة." data-en="School is open as usual and studies continue.">کۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە.</p>
+    </div>
+    <div class="card"><h3 data-ku="کۆمەلگەیکەمان کراوەیەکۆمەلگەکەمان جەندین کاری زانستی و رۆشنبیری و خێرخوازی لەخۆدەگرێتکۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە" data-bd="کۆمەلگەیکەمان کراوەیەکۆمەلگەکەمان جەندین کاری زانستی و رۆشنبیری و خێرخوازی لەخۆدەگرێتکۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە" data-ar="کۆمەلگەیکەمان کراوەیەکۆمەلگەکەمان جەندین کاری زانستی و رۆشنبیری و خێرخوازی لەخۆدەگرێتکۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە" data-en="کۆمەلگەیکەمان کراوەیەکۆمەلگەکەمان جەندین کاری زانستی و رۆشنبیری و خێرخوازی لەخۆدەگرێتکۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە">کۆمەلگەیکەمان کراوەیەکۆمەلگەکەمان جەندین کاری زانستی و رۆشنبیری و خێرخوازی لەخۆدەگرێتکۆمەلگەیکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە</h3><p data-ku="بە سەرکەوتووی لە خوێندنگە بەڕێوەچوو" data-bd="بە سەرکەوتووی لە خوێندنگە بەڕێوەچوو" data-ar="أقيمت بنجاح في المدرسة" data-en="Successfully held at school">بە سەرکەوتووی لە خوێندنگە بەڕێوەچوو</p></div>
+  </div>
+</section>
+
+<section id="info">
+  <h2 data-ku="زانیاری زیاتر" data-bd="زانیاری زیاتر" data-ar="معلومات إضافية" data-en="Additional Info">زانیاری زیاتر</h2>
+  <div class="grid">
+    <div class="card"><h3 data-ku="ژمارەی خوێندکاران" data-bd="ژمارەی خوێندکاران" data-ar="عدد الطلاب" data-en="Number of Students">ژمارەی خوێندکاران</h3><p data-ku="بە هەرسێ بەشی بنەرەتی و ناوەندی و داواناوەندی ۱۲۰۰ قوتابی" data-bd="بە هەرسێ بەشی بنەرەتی و ناوەندی و داواناوەندی ۱۲۰۰ قوتابی" data-ar="بە هەرسێ بەشی بنەرەتی و ناوەندی و داواناوەندی ۱۲۰۰ قوتابی" data-en="Over 1500 students">نبە هەرسێ بەشی بنەرەتی و ناوەندی و داواناوەندی ۱۲۰۰ قوتابی</p></div>
+    <div class="card"><h3 data-ku="مامۆستایان" data-bd="مامۆستایان" data-ar="المعلمون" data-en="Teachers">مامۆستایان</h3><p data-ku="ژمارەی مامۆستاوفەرمانبەرەنی کۆمەڵگا پێکهاتوە لە ۱٦۰فەرمانبەر" data-bd="ژمارەی مامۆستاوفەرمانبەرەنی کۆمەڵگا پێکهاتوە لە ۱٦۰فەرمانبەر" data-ar="ژمارەی مامۆستاوفەرمانبەرەنی کۆمەڵگا پێکهاتوە لە ۱٦۰فەرمانبەر" data-en="ژمارەی مامۆستاوفەرمانبەرەنی کۆمەڵگا پێکهاتوە لە ۱٦۰فەرمانبەر">ژمارەی مامۆستاوفەرمانبەرەنی کۆمەڵگا پێکهاتوە لە ۱٦۰فەرمانبەر</p></div>
+    <div class="card"><h3 data-ku="کڵێکی قوتابخانە" data-bd="کڵێکی قوتابخانە" data-ar="مفتاح المدرسة" data-en="School Motto">کڵێکی قوتابخانە</h3><p data-ku="بە زانینەوە بۆ پێشکەوتن" data-bd="بە زانینەوە بۆ پێشکەوتن" data-ar="بالعلم نحو التقدم" data-en="With knowledge towards progress">بە زانینەوە بۆ پێشکەوتن</p></div>
   </div>
 </section>
 
 <section id="contact">
-  <h2 data-ku="پەیوەندی" data-bd="پەیوەندی" data-ar="اتصل بنا" data-en="Contact">پەیوەندی</h2>
+  <h2 data-ku="ناونیشانی کۆمەڵگا" data-bd="ناونیشانی کۆمەڵگا" data-ar="ناونیشانی کۆمەڵگا" data-en="Contact">ناونیشانی کۆمەڵگا</h2>
   <div class="grid">
-    <div class="card"><h3 data-ku="ناونیشان" data-bd="ناونیشان" data-ar="العنوان" data-en="Address">هەولێر</h3></div>
-    <div class="card"><h3 data-ku="ئیمەیڵ" data-bd="ئیمەیڵ" data-ar="البريد الإلكتروني" data-en="Email">shahid.fakhir@school.edu</h3></div>
-    <div class="card"><h3 data-ku="تەلەفۆن" data-bd="تەلەفۆن" data-ar="الهاتف" data-en="Phone">+٩٦٤ ٧٥٠ ١٢٣ ٤٥٦٧</h3></div>
+    <div class="card"><h3 data-ku="ناونیشان" data-bd="ناونیشان" data-ar="العنوان" data-en="Address">ناونیشان</h3><p data-ku="شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان" data-bd="شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان" data-ar="شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی جیھان" data-en="شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان">شەقامی ۱۰۰ مەتری  گەرەکی نەورۆز تەنیشت کۆلێژی چیھان</p></div>
+    <div class="card"><h3 data-ku="ئیمەیڵ" data-bd="ئیمەیڵ" data-ar="البريد الإلكتروني" data-en="Email">ئیمەیڵ</h3><p>shahid.fakhir@school.com</p></div>
+    <div class="card"><h3 data-ku="ژ.تەلەفۆن." data-bd=".ژ.تەلەفۆن" data-ar="الهاتف" data-en="Phone">ژ.تەلەفۆن</h3><p>0751 430 9063</p></div>
   </div>
 </section>
 
 <footer>
-  <p data-ku="©️ ٢٠٢٥ خوێندنگەی شەهید فەخیر مەرجاسۆری. هەموو مافەکان پارێزراون." 
-     data-bd="©️ ٢٠٢٥ خوێندنگەی شەهید فەخیر مەرجاسۆری. هەموو مافەکان پارێزراون." 
-     data-ar="©️ ٢٠٢٥ مدرسة شهيد فخري مرجاصوري. جميع الحقوق محفوظة." 
-     data-en="©️ 2025 Shahid Fakhir Mergasori School. All rights reserved.">
-     ©️ ٢٠٢٦ خوێندنگەی شەهید فەخیر مەرجاسۆری.
+  <p data-ku="©️ created by las gevara ٢٠٢٦ کۆمەلگەیکەمان شەهید فەخیر مەرگەسۆری. هەموو مافەکان پارێزراون." 
+     data-bd="©️ created by las gevara ٢٠٢٦ کۆمەلگەیکەمان شەهید فەخیر مەرگەسۆری. هەموو مافەکان پارێزراون." 
+     data-ar="©️ created by las gevara ٢٠٢٦ مدرسة شهيد فخري مرگەصوري. جميع الحقوق محفوظة." 
+     data-en="©️ created by las gevara 2026 Shahid Fakhir Mergasori School. All rights reserved.">
+     ©️ ٢٠٢٦ کۆمەلگەیکەمان شەهید فەخیر مەرگەسۆری. هەموو مافەکان پارێزراون created by las gevara.
   </p>
 </footer>
 </body>
