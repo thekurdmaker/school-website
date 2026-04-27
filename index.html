@@ -3,27 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>کۆمەلگەی شەهید فەخیر مەرگەسۆری</title>
+<title>کۆمەڵگەی شەهید فەخیر مەرگەسۆری</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#eef2f7;color:#333;scroll-behavior:smooth;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#eef2f7;
+  color:#333;
+  scroll-behavior:smooth;
+}
 
 /* animations */
 @keyframes fadeSlideUp {
   0% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes gentlePulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
+
 @keyframes slideInLeft {
   0% { opacity: 0; transform: translateX(-40px); }
   100% { opacity: 1; transform: translateX(0); }
 }
+
 @keyframes slideInRight {
   0% { opacity: 0; transform: translateX(40px); }
   100% { opacity: 1; transform: translateX(0); }
@@ -33,6 +47,7 @@ nav, header, section, footer {
   animation: fadeSlideUp 0.7s ease forwards;
 }
 
+/* navigation */
 nav{
   background:#2575fc;
   padding:15px 30px;
@@ -42,19 +57,45 @@ nav{
   position:sticky;
   top:0;
   z-index:1000;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
 }
+
 nav a{
   text-decoration:none;
   color:white;
   font-weight:600;
-  transition:0.3s;
-}
-nav a:hover{
-  transform:translateY(-3px);
+  transition:all 0.3s ease;
+  display:inline-block;
 }
 
-/* FIXED HEADER */
+nav a:hover{
+  transform:translateY(-3px);
+  text-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* language button */
+.lang-switch{
+  position:absolute;
+  top:15px;
+  left:20px;
+  background:white;
+  color:#2575fc;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  z-index:1100;
+  transition:all 0.2s ease;
+}
+
+.lang-switch:hover{
+  background:#ff9800;
+  color:white;
+  border-radius:20px;
+}
+
+/* fixed header alignment */
 header{
   text-align:center;
   padding:60px 20px;
@@ -68,67 +109,97 @@ header{
   justify-content:center;
 }
 
-/* FIXED IMAGE CENTER */
 header img{
   width:160px;
   height:160px;
+  margin-bottom:15px;
   border-radius:50%;
   border:4px solid white;
+  cursor:pointer;
   object-fit:cover;
-  margin:0 auto 15px;
   display:block;
-  transition:0.4s;
+  transition:transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
+
 header img:hover{
   transform:rotate(8deg) scale(1.08);
 }
 
-.lang-switch{
-  position:absolute;
-  top:15px;
-  left:20px;
-  background:white;
-  color:#2575fc;
-  border:none;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
+header h1{
+  text-align:center;
+  margin-top:10px;
+  font-size:2.2em;
+  line-height:1.5;
 }
 
+header p{
+  text-align:center;
+  margin-top:8px;
+  font-size:1.1em;
+}
+
+/* sections */
 section{
   padding:70px 20px;
   max-width:1200px;
   margin:auto;
 }
+
 section h2{
   text-align:center;
   margin-bottom:30px;
   font-size:2.5em;
   color:#1976d2;
+  animation:slideInLeft 0.5s ease;
+  position:relative;
+}
+
+section h2::after{
+  content:'';
+  display:block;
+  width:80px;
+  height:4px;
+  background:#ff9800;
+  margin:12px auto 0;
+  border-radius:4px;
+  animation:gentlePulse 1.5s infinite ease;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:25px;
+  margin-top:30px;
 }
+
 .card{
   background:white;
   padding:22px;
   border-radius:14px;
   box-shadow:0 6px 12px rgba(0,0,0,0.1);
-  transition:0.3s;
-}
-.card:hover{
-  transform:translateY(-10px);
+  animation:fadeSlideUp 0.6s ease backwards;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-footer{
-  background:#1976d2;
-  color:white;
-  text-align:center;
-  padding:20px;
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 20px 30px rgba(0,0,0,0.15);
 }
+
+.card h3{
+  margin-bottom:10px;
+  color:#1976d2;
+  line-height:1.8;
+}
+
+.card p{
+  line-height:1.8;
+}
+
+.grid .card:nth-child(1){ animation-delay:0.05s; }
+.grid .card:nth-child(2){ animation-delay:0.1s; }
+.grid .card:nth-child(3){ animation-delay:0.15s; }
+.grid .card:nth-child(4){ animation-delay:0.2s; }
 
 /* music */
 .music-container{
@@ -141,15 +212,73 @@ footer{
   box-shadow:0 5px 20px rgba(0,0,0,0.2);
   z-index:999;
   width:320px;
+  border:2px solid #1976d2;
+  animation:slideInRight 0.5s ease;
+  transition:all 0.2s;
 }
+
+.music-container:hover{
+  transform:scale(1.02);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
 .music-title{
-  text-align:center;
   color:#1976d2;
-  font-weight:bold;
+  font-weight:700;
+  margin-bottom:10px;
+  text-align:center;
+  font-size:16px;
 }
+
 .music-iframe{
   width:100%;
   height:60px;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+.music-note{
+  text-align:center;
+  font-size:12px;
+  color:#666;
+  margin-top:8px;
+}
+
+/* footer */
+footer{
+  background:#1976d2;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+footer p{
+  animation:gentlePulse 2s infinite ease;
+}
+
+/* mobile */
+@media (max-width:600px){
+  header{
+    padding:50px 15px;
+  }
+
+  header img{
+    width:130px;
+    height:130px;
+  }
+
+  header h1{
+    font-size:1.6em;
+  }
+
+  section h2{
+    font-size:2em;
+  }
+
+  .music-container{
+    width:280px;
+    padding:12px;
+  }
 }
 </style>
 </head>
@@ -157,69 +286,178 @@ footer{
 <body lang="ku" dir="rtl">
 
 <select class="lang-switch" onchange="changeLanguage(this.value)">
-<option value="ku">کوردی</option>
-<option value="ar">العربية</option>
-<option value="en">English</option>
+  <option value="ku">کوردی (سۆرانی)</option>
+  <option value="bd">کوردی (بادینی)</option>
+  <option value="ar">العربية</option>
+  <option value="en">English</option>
 </select>
 
 <nav>
-<a href="#home">سەرەتا</a>
-<a href="#about">دەربارە</a>
-<a href="#info">زانیاری</a>
-<a href="#contact">پەیوەندی</a>
+  <a href="#home" data-ku="سەرەتا" data-bd="سەرەتە" data-ar="الرئيسية" data-en="Home">سەرەتا</a>
+  <a href="#about" data-ku="دەربارە" data-bd="دەربارە" data-ar="حول" data-en="About">دەربارە</a>
+  <a href="#news" data-ku="کاروچاڵاکیەکانی ئەم ھەفتیە" data-bd="کاروچاڵاکیەکانی ئەم ھەفتیە" data-ar="النشاطات الأسبوعية" data-en="Weekly Activities">کاروچاڵاکیەکانی ئەم ھەفتیە</a>
+  <a href="#info" data-ku="زانیاری زیاتر" data-bd="زانیاری زیاتر" data-ar="معلومات إضافية" data-en="Info">زانیاری زیاتر</a>
+  <a href="#contact" data-ku="ناونیشانی کۆمەڵگا" data-bd="ناونیشانی کۆمەڵگا" data-ar="اتصل" data-en="Contact">ناونیشانی کۆمەڵگا</a>
 </nav>
 
 <header id="home">
+  <img 
+    src="https://tse2.mm.bing.net/th/id/OIP.h4b_qly2cFQquu-TxmI0UgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+    alt="لۆگۆی خوێندنگە"
+  >
 
-<!-- ✅ FIXED IMAGE -->
-<img src="https://tse2.mm.bing.net/th/id/OIP.h4b_qly2cFQquu-TxmI0UgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
-alt="لۆگۆ">
+  <h1 data-ku="کۆمەڵگەی شەهید فەخیر مەرگەسۆری" 
+      data-bd="کۆمەڵگەی شەهید فەخیر مەرگەسۆری" 
+      data-ar="مدرسة شهيد فخير مرجاصوري" 
+      data-en="Shahid Fakhir Mergasori School">
+      کۆمەڵگەی شەهید فەخیر مەرگەسۆری
+  </h1>
 
-<h1>کۆمەلگەی شەهید فەخیر مەرگەسۆری</h1>
-<p>بەخێربێن بۆ ماڵپەڕی فەرمی</p>
-
+  <p data-ku="بەخێربێن بۆ ماڵپەڕی فەرمی کۆمەڵگەکەمان" 
+     data-bd="بەخێربێن بۆ ماڵپەڕی فەرمی کۆمەڵگەکەمان" 
+     data-ar="مرحبًا بكم في موقعنا الرسمي" 
+     data-en="Welcome to our official school website">
+     بەخێربێن بۆ ماڵپەڕی فەرمی کۆمەڵگەکەمان
+  </p>
 </header>
 
 <section id="about">
-<h2>دەربارە</h2>
-<div class="grid">
-<div class="card">خوێندنی باش و پێشکەوتوو</div>
-<div class="card">مامۆستای شارەزا</div>
-<div class="card">ژینگەی باش</div>
-</div>
+  <h2 data-ku="دەربارەی کۆمەڵگەی شەهید فەخیر مەرگەسۆری" 
+      data-bd="دەربارەی کۆمەڵگەی شەهید فەخیر مەرگەسۆری" 
+      data-ar="حول المدرسة" 
+      data-en="About Our School">
+      دەربارەی کۆمەڵگەی شەهید فەخیر مەرگەسۆری
+  </h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3 data-ku="بینینی ئێمە" data-bd="بینینی ئێمە" data-ar="رؤيتنا" data-en="Our Vision">بینینی ئێمە</h3>
+      <p data-ku="خوێندنی باکیفی، بەشداربوون و ڕاهێنان بۆ داهاتوویەکی بەهێز." data-bd="خوێندنی باکیفی، بەشداربوون و ڕاهێنان بۆ داهاتوویەکی بەهێز." data-ar="تعليم ذو جودة وإرشاد الطلاب لمستقبل أفضل." data-en="Quality education and guiding students for a brighter future.">خوێندنی باکیفی، بەشداربوون و ڕاهێنان بۆ داهاتوویەکی بەهێز.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="ئامانجی ئێمە" data-bd="ئامانجی ئێمە" data-ar="مهمتنا" data-en="Our Mission">ئامانجی ئێمە</h3>
+      <p data-ku="پێشکەشکردنی فێرکاری باکیفی و گەشەی تایبەتی." data-bd="پێشکەشکردنی فێرکاری باکیفی و گەشەی تایبەتی." data-ar="تقديم تعليم عالي الجودة ونمو شخصي." data-en="Providing quality learning and personal growth.">پێشکەشکردنی فێرکاری باکیفی و گەشەی تایبەتی.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="ڕێکەوتی دامەزراندن" data-bd="ڕێکەوتی دامەزراندن" data-ar="التأسيس" data-en="History and Creation">ڕێکەوتی دامەزراندن</h3>
+      <p data-ku="کۆمەڵگەکەمان لە ساڵی 2007/2707 دامەزرابوو." data-bd="کۆمەڵگەکەمان لە ساڵی 2007/2707 دامەزرابوو." data-ar="تأسست المدرسة في عام 2007/2707." data-en="The school was founded in 2007.">کۆمەڵگەکەمان لە ساڵی 2007/2707 دامەزرابوو.</p>
+      <p data-ku="شوێنی دامەزراندن: شەقامی ۱۰۰ مەتری، گەرەکی نەورۆز، تەنیشت کۆلێژی چیھان." data-bd="شوێنی دامەزراندن: شەقامی ۱۰۰ مەتری، گەرەکی نەورۆز، تەنیشت کۆلێژی چیھان." data-ar="موقع التأسيس: شارع 100 متر، حي نوروز، بجانب كلية جيهان." data-en="Founded in: 100 Meter Street, Nawroz Neighborhood, near Cihan College.">شوێنی دامەزراندن: شەقامی ۱۰۰ مەتری، گەرەکی نەورۆز، تەنیشت کۆلێژی چیھان.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="پڕۆگرام و فەسیلیتەکان" data-bd="پڕۆگرام و فەسیلیتەکان" data-ar="البرامج والمرافق" data-en="Programs and Facilities">پڕۆگرام و فەسیلیتەکان</h3>
+      <p data-ku="کۆمەڵگەکەمان پڕۆگرامێکی زانستی و وەرزشی هەیە." data-bd="کۆمەڵگەکەمان پڕۆگرامێکی زانستی و وەرزشی هەیە." data-ar="تقدم المدرسة برامج علمية ورياضية." data-en="The school offers scientific and sports programs.">کۆمەڵگەکەمان پڕۆگرامێکی زانستی و وەرزشی هەیە.</p>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <h2 data-ku="کاروچاڵاکیەکانی ئەم ھەفتیە" 
+      data-bd="کاروچاڵاکیەکانی ئەم ھەفتیە" 
+      data-ar="النشاطات الأسبوعية" 
+      data-en="Weekly Activities">
+      کاروچاڵاکیەکانی ئەم ھەفتیە
+  </h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3 data-ku="کۆمەڵگەکەمان کراوەیە" data-bd="کۆمەڵگەکەمان کراوەیە" data-ar="المدرسة مفتوحة" data-en="School is open">کۆمەڵگەکەمان کراوەیە</h3>
+      <p data-ku="کۆمەڵگەکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە." data-bd="کۆمەڵگەکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە." data-ar="المدرسة مفتوحة كالمعتاد والدراسة مستمرة." data-en="School is open as usual and studies continue.">کۆمەڵگەکەمان بە شێوەی ئاسایی کراوە و خوێندن بەردەوامە.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="چاڵاکیەکان" data-bd="چاڵاکیەکان" data-ar="النشاطات" data-en="Activities">چاڵاکیەکان</h3>
+      <p data-ku="۱- گەشتێکی زانستی بۆ ناو لاپەڕەکانی مێژوو لە یادی ۱۲۸ ساڵی ڕۆژنامەگەری کوردی." data-bd="۱- گەشتێکی زانستی بۆ ناو لاپەڕەکانی مێژوو لە یادی ۱۲۸ ساڵی ڕۆژنامەگەری کوردی." data-ar="١- رحلة علمية بمناسبة مرور 128 سنة على الصحافة الكوردية." data-en="1- A scientific trip for the 128th anniversary of Kurdish journalism.">۱- گەشتێکی زانستی بۆ ناو لاپەڕەکانی مێژوو لە یادی ۱۲۸ ساڵی ڕۆژنامەگەری کوردی.</p>
+      <p data-ku="۲- ژینگەپارێزی لە پێشینەی کارەکانمانە." data-bd="۲- ژینگەپارێزی لە پێشینەی کارەکانمانە." data-ar="٢- حماية البيئة من أولوياتنا." data-en="2- Environmental protection is one of our priorities.">۲- ژینگەپارێزی لە پێشینەی کارەکانمانە.</p>
+      <p data-ku="۳- زیاتر لە ۱۰۰ نەمام لە گۆڕەپانی کۆمەڵگا چێنرا." data-bd="۳- زیاتر لە ۱۰۰ نەمام لە گۆڕەپانی کۆمەڵگا چێنرا." data-ar="٣- تمت زراعة أكثر من 100 شتلة في ساحة المدرسة." data-en="3- More than 100 seedlings were planted in the school yard.">۳- زیاتر لە ۱۰۰ نەمام لە گۆڕەپانی کۆمەڵگا چێنرا.</p>
+      <p data-ku="۴- چاودێری سەردانی مەیدانی لێژنەی ژینگە و تەندروستی بۆ کافتریای قوتابخانە." data-bd="۴- چاودێری سەردانی مەیدانی لێژنەی ژینگە و تەندروستی بۆ کافتریای قوتابخانە." data-ar="٤- متابعة زيارة لجنة البيئة والصحة إلى كافتيريا المدرسة." data-en="4- Monitoring the field visit of the environment and health committee to the school cafeteria.">۴- چاودێری سەردانی مەیدانی لێژنەی ژینگە و تەندروستی بۆ کافتریای قوتابخانە.</p>
+      <p data-ku="۵- ڕێنمایی کردنی قوتابیان بۆ کاتی تاقیکردنەوەکان." data-bd="۵- ڕێنمایی کردنی قوتابیان بۆ کاتی تاقیکردنەوەکان." data-ar="٥- إرشاد الطلاب خلال فترة الامتحانات." data-en="5- Guiding students during exam time.">۵- ڕێنمایی کردنی قوتابیان بۆ کاتی تاقیکردنەوەکان.</p>
+    </div>
+  </div>
 </section>
 
 <section id="info">
-<h2>زانیاری</h2>
-<div class="grid">
-<div class="card">١٢٠٠ قوتابی</div>
-<div class="card">١٦٠ مامۆستا</div>
-</div>
+  <h2 data-ku="زانیاری زیاتر" data-bd="زانیاری زیاتر" data-ar="معلومات إضافية" data-en="Additional Info">زانیاری زیاتر</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3 data-ku="ژمارەی خوێندکاران" data-bd="ژمارەی خوێندکاران" data-ar="عدد الطلاب" data-en="Number of Students">ژمارەی خوێندکاران</h3>
+      <p data-ku="بە هەرسێ بەشی بنەرەتی و ناوەندی و دواناوەندی ۱۲۰۰ قوتابی." data-bd="بە هەرسێ بەشی بنەرەتی و ناوەندی و دواناوەندی ۱۲۰۰ قوتابی." data-ar="يضم المجمع 1200 طالب في الأقسام الأساسية والمتوسطة والإعدادية." data-en="The school has 1200 students across primary, middle, and high school sections.">بە هەرسێ بەشی بنەرەتی و ناوەندی و دواناوەندی ۱۲۰۰ قوتابی.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="مامۆستایان" data-bd="مامۆستایان" data-ar="المعلمون" data-en="Teachers">مامۆستایان</h3>
+      <p data-ku="ژمارەی مامۆستا و فەرمانبەرانی کۆمەڵگا پێکهاتووە لە ۱۶۰ فەرمانبەر." data-bd="ژمارەی مامۆستا و فەرمانبەرانی کۆمەڵگا پێکهاتووە لە ۱۶۰ فەرمانبەر." data-ar="عدد المعلمين والموظفين في المجمع هو 160 موظفًا." data-en="The school has 160 teachers and staff members.">ژمارەی مامۆستا و فەرمانبەرانی کۆمەڵگا پێکهاتووە لە ۱۶۰ فەرمانبەر.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="کلیلی قوتابخانە" data-bd="کلیلی قوتابخانە" data-ar="شعار المدرسة" data-en="School Motto">کلیلی قوتابخانە</h3>
+      <p data-ku="بە زانینەوە بۆ پێشکەوتن." data-bd="بە زانینەوە بۆ پێشکەوتن." data-ar="بالعلم نحو التقدم." data-en="With knowledge towards progress.">بە زانینەوە بۆ پێشکەوتن.</p>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-<h2>پەیوەندی</h2>
-<div class="grid">
-<div class="card">07514309063</div>
-<div class="card">Erbil</div>
-</div>
+  <h2 data-ku="ناونیشانی کۆمەڵگا" data-bd="ناونیشانی کۆمەڵگا" data-ar="العنوان" data-en="Contact">ناونیشانی کۆمەڵگا</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3 data-ku="ناونیشان" data-bd="ناونیشان" data-ar="العنوان" data-en="Address">ناونیشان</h3>
+      <p data-ku="شەقامی ۱۰۰ مەتری، گەرەکی نەورۆز، تەنیشت کۆلێژی چیھان." data-bd="شەقامی ۱۰۰ مەتری، گەرەکی نەورۆز، تەنیشت کۆلێژی چیھان." data-ar="شارع 100 متر، حي نوروز، بجانب كلية جيهان." data-en="100 Meter Street, Nawroz Neighborhood, near Cihan College.">شەقامی ۱۰۰ مەتری، گەرەکی نەورۆز، تەنیشت کۆلێژی چیھان.</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="ئیمەیڵ" data-bd="ئیمەیڵ" data-ar="البريد الإلكتروني" data-en="Email">ئیمەیڵ</h3>
+      <p>shahid.fakhir@school.com</p>
+    </div>
+
+    <div class="card">
+      <h3 data-ku="ژمارەی تەلەفۆن" data-bd="ژمارەی تەلەفۆن" data-ar="الهاتف" data-en="Phone">ژمارەی تەلەفۆن</h3>
+      <p>0751 430 9063</p>
+    </div>
+  </div>
 </section>
 
-<!-- music -->
 <div class="music-container">
-  <div class="music-title">🎵 هەر کوردین</div>
-  <iframe src="https://archive.org/embed/har-kurdin-w-har-kurd-abin" class="music-iframe"></iframe>
+  <div class="music-title">🎵 هەر کوردین و هەر کورد ئەبین</div>
+  <iframe 
+    src="https://archive.org/embed/har-kurdin-w-har-kurd-abin" 
+    width="100%" 
+    height="60" 
+    frameborder="0" 
+    allowfullscreen 
+    class="music-iframe">
+  </iframe>
+  <div class="music-note">🔊 کرتە لەسەر دەنگی بکە بۆ گوێگرتن</div>
 </div>
+
+<footer>
+  <p data-ku="©️ created by las gevara ٢٠٢٦ کۆمەڵگەی شەهید فەخیر مەرگەسۆری. هەموو مافەکان پارێزراون." 
+     data-bd="©️ created by las gevara ٢٠٢٦ کۆمەڵگەی شەهید فەخیر مەرگەسۆری. هەموو مافەکان پارێزراون." 
+     data-ar="©️ created by las gevara ٢٠٢٦ مدرسة شهيد فخري مرگەصوري. جميع الحقوق محفوظة." 
+     data-en="©️ created by las gevara 2026 Shahid Fakhir Mergasori School. All rights reserved.">
+     ©️ created by las gevara ٢٠٢٦ کۆمەڵگەی شەهید فەخیر مەرگەسۆری. هەموو مافەکان پارێزراون.
+  </p>
+</footer>
 
 <script>
 function changeLanguage(lang){
-  document.body.dir = (lang=='en')?'ltr':'rtl';
-}
-</script>
+  document.body.lang = lang;
+  document.body.dir = lang === 'en' ? 'ltr' : 'rtl';
 
-<footer>
-<p>© 2026 School</p>
-</footer>
+  const elements = document.querySelectorAll('[data-ku]');
+  elements.forEach(el => {
+    const translation = el.getAttribute('data-' + lang);
+    if(translation){
+      el.innerText = translation;
+    }
+  });
+}
+
+changeLanguage('ku');
+</script>
 
 </body>
 </html>
